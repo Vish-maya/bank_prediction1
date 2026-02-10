@@ -75,9 +75,9 @@ body { background: var(--bg); color: var(--text); }
 # =====================================================
 # LOAD MODEL
 # =====================================================
-model_path = "tuned_random_forest_model.pkl"
+model_path = "model.pkl"
 if not os.path.exists(model_path):
-    st.error("❌ tuned_random_forest_model.pkl not found")
+    st.error("❌ model.pkl not found")
     st.stop()
 
 model = joblib.load(model_path)
