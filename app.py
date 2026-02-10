@@ -131,7 +131,7 @@ with col2:
     loan = st.selectbox("💳 Personal Loan", ["yes", "no"])
     campaign = st.number_input("📞 Campaign Contacts", 1, value=1)
     previous = st.number_input("📂 Previous Contacts", 0, value=0)
-    outcome=st.selectbox("📝 Previous Outcome", ["unknown", "failure", "success"])
+    # outcome=st.selectbox("📝 Previous Outcome", ["unknown", "failure", "success"])
 
     
 
@@ -155,9 +155,9 @@ if predict:
         "previous": previous,
         "housing_yes": 1 if housing == "yes" else 0,
         "loan_yes": 1 if loan == "yes" else 0,
-        "poutcome_unknown": 1 if outcome == "unknown" else 0,
-        "poutcome_failure": 1 if outcome == "failure" else 0,
-        "poutcome_success": 1 if outcome == "success" else 0
+        # "poutcome_unknown": 1 if outcome == "unknown" else 0,
+        # "poutcome_failure": 1 if outcome == "failure" else 0,
+        # "poutcome_success": 1 if outcome == "success" else 0
 
     }])
 
