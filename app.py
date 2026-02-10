@@ -165,8 +165,9 @@ if predict:
 
     # pred = model.predict(X)[0]
     threshold = 0.40
-    pred = 1 if prob >= threshold else 0
+    # pred = 1 if pro>= threshold else 0
     prob = model.predict_proba(X)[0][1]
+    pred = 1 if prob >= threshold else 0
     confidence = int(prob * 100)
 
     colA, colB = st.columns(2)
