@@ -147,7 +147,7 @@ predict = st.button("🔍 Predict Subscription", use_container_width=True)
 # =====================================================
 if predict:
 
-    poutcome_success=1 if outcome=="success" else 0
+    
     X = pd.DataFrame([{
         "age": age,
         "balance": balance,
@@ -155,7 +155,9 @@ if predict:
         "previous": previous,
         "housing_yes": 1 if housing == "yes" else 0,
         "loan_yes": 1 if loan == "yes" else 0,
-        "poutcome_unknown":poutcome_success
+        "poutcome_unknown": 1 if outcome == "unknown" else 0,
+        "poutcome_failure": 1 if outcome == "failure" else 0,
+        "poutcome_success": 1 if outcome == "success" else 0
 
     }])
 
