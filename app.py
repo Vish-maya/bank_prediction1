@@ -4,19 +4,15 @@ import joblib
 import os
 import matplotlib.pyplot as plt
 
-# =====================================================
+
 # PAGE CONFIG
-# =====================================================
+
 st.set_page_config(
     page_title="Bank Term Deposit Predictor",
     page_icon="🏦",
     layout="wide",
     initial_sidebar_state="expanded",
 )
-
-# =====================================================
-# FORCE FULL WIDTH
-# =====================================================
 st.markdown("""
 <style>
 .block-container {
@@ -26,9 +22,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# =====================================================
 # THEME & STYLES
-# =====================================================
+
 st.markdown("""
 <style>
 :root {
@@ -72,9 +67,7 @@ body { background: var(--bg); color: var(--text); }
 </style>
 """, unsafe_allow_html=True)
 
-# =====================================================
 # LOAD MODEL
-# =====================================================
 model_path = "model.pkl"
 if not os.path.exists(model_path):
     st.error("❌ model.pkl not found")
@@ -83,9 +76,8 @@ if not os.path.exists(model_path):
 model = joblib.load(model_path)
 feature_names = model.feature_names_in_
 
-# =====================================================
 # SIDEBAR
-# =====================================================
+
 st.sidebar.title("🧭 Simulation Panel")
 st.sidebar.write("Adjust inputs to simulate different customer profiles.")
 st.sidebar.markdown("""
@@ -95,9 +87,9 @@ st.sidebar.markdown("""
 - Output: Probability
 """)
 
-# =====================================================
-# HERO HEADER
-# =====================================================
+
+# HEADER
+
 st.markdown("""
 <div style="
     background: linear-gradient(135deg, #1e3c72, #2a5298);
@@ -114,9 +106,8 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# =====================================================
 # INPUT CARD
-# =====================================================
+
 st.markdown("<div class='card'>", unsafe_allow_html=True)
 st.markdown("<div class='section-title'>📋 Customer Profile</div>", unsafe_allow_html=True)
 
@@ -137,14 +128,14 @@ with col2:
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-# =====================================================
+
 # PREDICTION BUTTON
-# =====================================================
+
 predict = st.button("🔍 Predict Subscription", use_container_width=True)
 
-# =====================================================
+
 # PREDICTION OUTPUT
-# =====================================================
+
 if predict:
 
     
@@ -172,7 +163,7 @@ if predict:
 
     colA, colB = st.columns(2)
 
-    # ---------------- RESULT ----------------
+    #  RESULT 
     with colA:
         st.markdown("<div class='card'>", unsafe_allow_html=True)
         st.subheader("📌 Prediction Result")
@@ -202,7 +193,7 @@ if predict:
 
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # ---------------- MODEL INSIGHTS ----------------
+    #  MODEL INSIGHTS 
     with colB:
         st.markdown("<div class='card'>", unsafe_allow_html=True)
         st.subheader("📊 Model Insights")
@@ -221,7 +212,7 @@ if predict:
         st.pyplot(fig)
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # ----------------  EXPLANATION ----------------
+    #  EXPLANATION 
     st.markdown("<div class='card'>", unsafe_allow_html=True)
     st.subheader("🧠  Explanation")
 
@@ -243,7 +234,7 @@ if predict:
 
     st.markdown("</div>", unsafe_allow_html=True)
 
-    # ---------------- CUSTOMER COMPARISON ----------------
+    #  CUSTOMER COMPARISON 
     st.markdown("<div class='card'>", unsafe_allow_html=True)
     st.subheader("📎 Customer Comparison")
 
@@ -254,9 +245,9 @@ if predict:
 
     st.markdown("</div>", unsafe_allow_html=True)
 
-# =====================================================
+
 # FOOTER
-# =====================================================
+
 st.markdown(
     "<p style='text-align:center;color:#a9b4d1;font-size:12px;'>"
     "Built with Streamlit • Academic Demonstration"
