@@ -108,7 +108,7 @@ st.markdown("""
 ">
     <h1>🏦 Bank Term Deposit Predictor</h1>
     <p style="color:#dbe4ff;font-size:16px;">
-        AI-powered decision support system to identify high-potential customers
+        A decision support system to identify high-potential customers
         <br>before initiating a marketing campaign.
     </p>
 </div>
@@ -131,6 +131,9 @@ with col2:
     loan = st.selectbox("💳 Personal Loan", ["yes", "no"])
     campaign = st.number_input("📞 Campaign Contacts", 1, value=1)
     previous = st.number_input("📂 Previous Contacts", 0, value=0)
+    outcome=st.selectbox("📝 Previous Outcome", ["unknown", "failure", "success"])
+
+    
 
 st.markdown("</div>", unsafe_allow_html=True)
 
@@ -143,13 +146,17 @@ predict = st.button("🔍 Predict Subscription", use_container_width=True)
 # PREDICTION OUTPUT
 # =====================================================
 if predict:
+
+    poutcome_success=1 if outcome=="success" else 0
     X = pd.DataFrame([{
         "age": age,
         "balance": balance,
         "campaign": campaign,
         "previous": previous,
         "housing_yes": 1 if housing == "yes" else 0,
-        "loan_yes": 1 if loan == "yes" else 0
+        "loan_yes": 1 if loan == "yes" else 0,
+        "poutcome_unknown":poutcome_success
+
     }])
 
     X = X.reindex(columns=feature_names, fill_value=0)
@@ -209,9 +216,9 @@ if predict:
         st.pyplot(fig)
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # ---------------- AI EXPLANATION ----------------
+    # ----------------  EXPLANATION ----------------
     st.markdown("<div class='card'>", unsafe_allow_html=True)
-    st.subheader("🧠 AI Explanation")
+    st.subheader("🧠  Explanation")
 
     reasons = []
     if balance > 2000:
