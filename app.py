@@ -163,7 +163,9 @@ if predict:
 
     X = X.reindex(columns=feature_names, fill_value=0)
 
-    pred = model.predict(X)[0]
+    # pred = model.predict(X)[0]
+    threshold = 0.40
+    pred = 1 if prob >= threshold else 0
     prob = model.predict_proba(X)[0][1]
     confidence = int(prob * 100)
 
